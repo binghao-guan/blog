@@ -11,7 +11,7 @@
 <meta name="keywords" content="h5">
 <meta property="og:type" content="website">
 <meta property="og:title" content="技术博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="https://binghao-guan.github.io/blog/index.html">
 <meta property="og:site_name" content="技术博客">
 <meta property="og:description" content="h5, javascript, typescript, web,">
 <meta property="og:locale" content="zh">
@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="技术博客">
 <meta name="twitter:description" content="h5, javascript, typescript, web,">
   
-    <link rel="alternate" href="/atom.xml" title="技术博客" type="application/atom+xml">
+    <link rel="alternate" href="/blog/atom.xml" title="技术博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -27,7 +27,7 @@
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/blog/css/style.css">
 </head>
 </html>
 <body>
@@ -38,11 +38,11 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">技术博客</a>
+        <a href="/blog/" id="logo">技术博客</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">h5技术博客</a>
+          <a href="/blog/" id="subtitle">h5技术博客</a>
         </h2>
       
     </div>
@@ -50,19 +50,19 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/blog/">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://binghao-guan.github.io/blog"></form>
       </div>
     </div>
   </div>
@@ -72,12 +72,12 @@
   
     <article id="post-响应式图片" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/14/响应式图片/" class="article-date">
+    <a href="/blog/2019/08/14/响应式图片/" class="article-date">
   <time datetime="2019-08-14T05:57:07.000Z" itemprop="datePublished">2019-08-14</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/网站优化/">网站优化</a>
+    <a class="article-category-link" href="/blog/categories/网站优化/">网站优化</a>
   </div>
 
   </div>
@@ -88,7 +88,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/14/响应式图片/">响应式图片</a>
+      <a class="article-title" href="/blog/2019/08/14/响应式图片/">响应式图片</a>
     </h1>
   
 
@@ -97,9 +97,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>用来在不同的尺寸的设备上提供不同的图片，具体看下面的例子：下面的网站为pc上的页面，如果不使用响应式图片，在小屏幕如手机上看时，中间的人物会很小，并且无法看清人脸，图像留白太多。</p>
-<img src="/2019/08/14/响应式图片/picture-element-wide.png" title="pc图像">
+<img src="/blog/2019/08/14/响应式图片/picture-element-wide.png" title="pc图像">
 <p>下面的为优化后的，当屏幕设备比较小时，显示大图的剪裁版，以便可以看清人像。</p>
-<img src="/2019/08/14/响应式图片/non-responsive-narrow.png" title="pc图像">
+<img src="/blog/2019/08/14/响应式图片/non-responsive-narrow.png" title="pc图像">
 
 <h3 id="picture元素"><a href="#picture元素" class="headerlink" title="picture元素"></a>picture元素</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">"(min-width: 800px)"</span> <span class="attr">srcset</span>=<span class="string">"head.jpg, head-2x.jpg 2x"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">"(min-width: 450px)"</span> <span class="attr">srcset</span>=<span class="string">"head-small.jpg, head-small-2x.jpg 2x"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"head-fb.jpg"</span> <span class="attr">srcset</span>=<span class="string">"head-fb-2x.jpg 2x"</span> <span class="attr">alt</span>=<span class="string">"a head carved out of wood"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -136,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/14/响应式图片/" data-id="ck41a07ru0005zdblgeldwmq3" class="article-share-link">Share</a>
+      <a data-url="https://binghao-guan.github.io/blog/2019/08/14/响应式图片/" data-id="ck41aa6te000575blg8sihn7g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +148,7 @@
   
     <article id="post-出色的移动网站" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/07/出色的移动网站/" class="article-date">
+    <a href="/blog/2019/08/07/出色的移动网站/" class="article-date">
   <time datetime="2019-08-07T05:56:09.000Z" itemprop="datePublished">2019-08-07</time>
 </a>
     
@@ -160,7 +160,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/出色的移动网站/">出色的移动网站</a>
+      <a class="article-title" href="/blog/2019/08/07/出色的移动网站/">出色的移动网站</a>
     </h1>
   
 
@@ -203,10 +203,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/07/出色的移动网站/" data-id="ck41a07ri0001zdbl9woyc1bw" class="article-share-link">Share</a>
+      <a data-url="https://binghao-guan.github.io/blog/2019/08/07/出色的移动网站/" data-id="ck41aa6t2000075blu6s97ivf" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动网站/">移动网站</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/移动网站/">移动网站</a></li></ul>
 
     </footer>
   </div>
@@ -217,12 +217,12 @@
   
     <article id="post-双钻石设计模型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/07/双钻石设计模型/" class="article-date">
+    <a href="/blog/2019/08/07/双钻石设计模型/" class="article-date">
   <time datetime="2019-08-07T02:29:00.000Z" itemprop="datePublished">2019-08-07</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/用户体验基础知识/">用户体验基础知识</a>
+    <a class="article-category-link" href="/blog/categories/用户体验基础知识/">用户体验基础知识</a>
   </div>
 
   </div>
@@ -233,7 +233,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/双钻石设计模型/">双钻石设计模型</a>
+      <a class="article-title" href="/blog/2019/08/07/双钻石设计模型/">双钻石设计模型</a>
     </h1>
   
 
@@ -241,7 +241,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <img src="/2019/08/07/双钻石设计模型/double-diamond.png" title="双钻石设计模型">
+        <img src="/blog/2019/08/07/双钻石设计模型/double-diamond.png" title="双钻石设计模型">
 
 <p><a href="https://www.designcouncil.org.uk/" target="_blank" rel="noopener">英国设计协会</a>开创的”双钻石”设计流程模式，其步骤涉及以下项目阶段：<em>理解、定义、分散、决定、开发原型和验证</em>。</p>
 <h4 id="确定挑战声明"><a href="#确定挑战声明" class="headerlink" title="确定挑战声明"></a>确定挑战声明</h4><p>首先要从当前的根本性挑战着手，像提案一样把它写出来，并且要问自己:”我实际试图解决的是什么问题?”。挑战声明是为项目编写的简报，其中需要包含目标。</p>
@@ -258,14 +258,14 @@
 <p>完成挑战声明后，将其展示在醒目位置，以便工作时能够看到。以便不断的查阅声明内容，并在整个项目进行过程中对其更新或修改。</p>
 <h4 id="确认挑战（验证问题）"><a href="#确认挑战（验证问题）" class="headerlink" title="确认挑战（验证问题）"></a>确认挑战（验证问题）</h4><p>下一步是研究挑战和了解问题的相关情况。确定团队对问题的理解是否有效。因为一搬我们是从自己的角度看待问题，这样做很危险，因为大多数像我们这样的科技人员实际上超级用户，只是用户群体中的少数。我们是享有发言权的少数派，可能会愚蠢地认为存在某种问题，而事实并非如此。</p>
 <h4 id="项目规划图"><a href="#项目规划图" class="headerlink" title="项目规划图"></a>项目规划图</h4><p>由于参与人员是有不同类型的人员组成，需要详细列出每个参与者及其目标，并写下每个参与者需要完成的步骤数量</p>
-<img src="/2019/08/07/双钻石设计模型/project-map.jpg" title="项目规划图">
+<img src="/blog/2019/08/07/双钻石设计模型/project-map.jpg" title="项目规划图">
 <p>项目规划图对每个用户或参与者在流程中的主要步骤作出规划。</p>
 <p>项目规划图对每个用户或参与者在流程中的主要步骤作出规划。<br>得到的项目规划图包含流程中的主要步骤。可以将其视为不包含过多细节的项目概览。 团队成员还可通过它来判断规划图是否与挑战声明一致。 稍后，当您分解每个步骤时，可以获得更多详情。 但项目规划图暂时只能对用户完成最终目标所需执行的步骤进行高层次分解。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/07/双钻石设计模型/" data-id="ck41a07rw0007zdbl97388q00" class="article-share-link">Share</a>
+      <a data-url="https://binghao-guan.github.io/blog/2019/08/07/双钻石设计模型/" data-id="ck41aa6tc000375bl47ym8tfb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,12 +277,12 @@
   
     <article id="post-网站优化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/31/网站优化/" class="article-date">
+    <a href="/blog/2019/07/31/网站优化/" class="article-date">
   <time datetime="2019-07-31T09:16:17.000Z" itemprop="datePublished">2019-07-31</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/网站优化/">网站优化</a>
+    <a class="article-category-link" href="/blog/categories/网站优化/">网站优化</a>
   </div>
 
   </div>
@@ -293,7 +293,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/31/网站优化/">通过Audit优化网站加载速度</a>
+      <a class="article-title" href="/blog/2019/07/31/网站优化/">通过Audit优化网站加载速度</a>
     </h1>
   
 
@@ -312,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/31/网站优化/" data-id="ck41a07rt0004zdblgi09i52i" class="article-share-link">Share</a>
+      <a data-url="https://binghao-guan.github.io/blog/2019/07/31/网站优化/" data-id="ck41aa6t7000175blbhkb78f1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,7 +324,7 @@
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/25/hello-world/" class="article-date">
+    <a href="/blog/2019/07/25/hello-world/" class="article-date">
   <time datetime="2019-07-25T11:48:18.523Z" itemprop="datePublished">2019-07-25</time>
 </a>
     
@@ -336,7 +336,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/25/hello-world/">Hello World</a>
+      <a class="article-title" href="/blog/2019/07/25/hello-world/">Hello World</a>
     </h1>
   
 
@@ -361,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/25/hello-world/" data-id="ck41a07re0000zdblrylloblw" class="article-share-link">Share</a>
+      <a data-url="https://binghao-guan.github.io/blog/2019/07/25/hello-world/" data-id="ck41aa6tg000675blsduu9m8e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -381,7 +381,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/用户体验基础知识/">用户体验基础知识</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站优化/">网站优化</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/用户体验基础知识/">用户体验基础知识</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/网站优化/">网站优化</a></li></ul>
     </div>
   </div>
 
@@ -391,7 +391,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动网站/">移动网站</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/移动网站/">移动网站</a></li></ul>
     </div>
   </div>
 
@@ -401,7 +401,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/移动网站/" style="font-size: 10px;">移动网站</a>
+      <a href="/blog/tags/移动网站/" style="font-size: 10px;">移动网站</a>
     </div>
   </div>
 
@@ -410,7 +410,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">July 2019</a></li></ul>
     </div>
   </div>
 
@@ -423,23 +423,23 @@
       <ul>
         
           <li>
-            <a href="/2019/08/14/响应式图片/">响应式图片</a>
+            <a href="/blog/2019/08/14/响应式图片/">响应式图片</a>
           </li>
         
           <li>
-            <a href="/2019/08/07/出色的移动网站/">出色的移动网站</a>
+            <a href="/blog/2019/08/07/出色的移动网站/">出色的移动网站</a>
           </li>
         
           <li>
-            <a href="/2019/08/07/双钻石设计模型/">双钻石设计模型</a>
+            <a href="/blog/2019/08/07/双钻石设计模型/">双钻石设计模型</a>
           </li>
         
           <li>
-            <a href="/2019/07/31/网站优化/">通过Audit优化网站加载速度</a>
+            <a href="/blog/2019/07/31/网站优化/">通过Audit优化网站加载速度</a>
           </li>
         
           <li>
-            <a href="/2019/07/25/hello-world/">Hello World</a>
+            <a href="/blog/2019/07/25/hello-world/">Hello World</a>
           </li>
         
       </ul>
@@ -462,9 +462,9 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/blog/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
@@ -472,11 +472,11 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
+<script src="/blog/js/script.js"></script>
 
 
 
