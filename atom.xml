@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>技术博客</title>
+  
+  <subtitle>h5技术博客</subtitle>
+  <link href="/blog/atom.xml" rel="self"/>
+  
+  <link href="https://binghao-guan.github.io/blog/"/>
+  <updated>2019-08-28T11:28:47.503Z</updated>
+  <id>https://binghao-guan.github.io/blog/</id>
+  
+  <author>
+    <name>binghao.guan</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>响应式图片</title>
+    <link href="https://binghao-guan.github.io/blog/2019/08/14/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/"/>
+    <id>https://binghao-guan.github.io/blog/2019/08/14/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87/</id>
+    <published>2019-08-14T05:57:07.000Z</published>
+    <updated>2019-08-28T11:28:47.503Z</updated>
+    
+    <content type="html"><![CDATA[<p>用来在不同的尺寸的设备上提供不同的图片，具体看下面的例子：下面的网站为pc上的页面，如果不使用响应式图片，在小屏幕如手机上看时，中间的人物会很小，并且无法看清人脸，图像留白太多。</p><img src="/blog/2019/08/14/响应式图片/picture-element-wide.png" title="pc图像"><p>下面的为优化后的，当屏幕设备比较小时，显示大图的剪裁版，以便可以看清人像。</p><img src="/blog/2019/08/14/响应式图片/non-responsive-narrow.png" title="pc图像"><h3 id="picture元素"><a href="#picture元素" class="headerlink" title="picture元素"></a>picture元素</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">picture</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">"(min-width: 800px)"</span> <span class="attr">srcset</span>=<span class="string">"head.jpg, head-2x.jpg 2x"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">source</span> <span class="attr">media</span>=<span class="string">"(min-width: 450px)"</span> <span class="attr">srcset</span>=<span class="string">"head-small.jpg, head-small-2x.jpg 2x"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"head-fb.jpg"</span> <span class="attr">srcset</span>=<span class="string">"head-fb-2x.jpg 2x"</span> <span class="attr">alt</span>=<span class="string">"a head carved out of wood"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">picture</span>&gt;</span></span><br></pre></td></tr></table></figure><p>以上为具体用法，<em>&lt;picture&gt;</em>元素通过包含零或多个source 元素和一个img元素来为不同的显示场景提供图像版本。浏览器会选择最匹配的子 &lt;source&gt; 元素，如果没有匹配的，就选择 &lt;img&gt; 元素的 src 属性中的URL。然后，所选图像呈现在&lt;img&gt;元素占据的空间中。</p><h3 id="serset属性"><a href="#serset属性" class="headerlink" title="serset属性"></a>serset属性</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">srcset</span>=<span class="string">"elva-fairy-320w.jpg 320w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-480w.jpg 480w,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-800w.jpg 800w"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">sizes</span>=<span class="string">"(max-width: 320px) 280px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            (max-width: 480px) 440px,</span></span></span><br><span class="line"><span class="tag"><span class="string">            800px"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">src</span>=<span class="string">"elva-fairy-800w.jpg"</span> <span class="attr">alt</span>=<span class="string">"Elva dressed as a fairy"</span>&gt;</span></span><br></pre></td></tr></table></figure><p>srcset属性用来设置在不同的分辨率中显示的图像，srcset属性为一组由逗号分隔的字符串组成，其中字符串由以下组成：</p><ol><li>一个图片名</li><li>一个空格</li><li>图像的固有宽度（以像素为单位）这里用的是图片的宽度，单位是<code>w</code>，数字为图片的实际宽度</li></ol><p><em>sizes</em>定义了我们允许浏览器选择的兔相机，以及每个图像的大小。在每个逗号之前，我们写：</p><ol><li>一个媒体条件</li><li>一个空格</li><li>当媒体条件为真时，图像将填充的<em>槽的宽度（440px）</em>。</li></ol><p>以上srcset属性的空格后配合sizes共同完成不同分辨率的加载，具体流程为当图片加载时，浏览器会：</p><ol><li>查看设备宽度。</li><li>检查<code>sizes</code>列表中那个媒体条件是第一个为真</li><li>查看给予该媒体查询的槽的大小</li><li>加载<code>srcset</code>列表中引用的最接近所选的槽大小的图像。<br>所以，如果支持浏览器以视窗宽度为480px来加载页面，那么(max-width: 480px)的媒体条件为真，因此440px的槽会被选择，所以elva-fairy-480w.jpg将加载，因为它的的固定宽度（480w）最接近于440px。800px的照片大小为128KB而480px版本仅有63KB大小—节省了65KB。现在想象一下，如果这是一个有很多图片的页面。使用这种技术会节省移动端用户的大量带宽。</li></ol><p>老旧的浏览器不支持这些特性，它会忽略这些特征。并继续正常加载 src属性引用的图像文件。</p><p>如果希望支持多种分辨率显示，但希望每个人在屏幕上看到的图片的实际尺寸是相同的，你可以让浏览器通过srcset和x语法结合——一种更简单的语法——而不用sizes，来选择适当分辨率的图片。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">srcset</span>=<span class="string">"elva-fairy-320w.jpg,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-480w.jpg 1.5x,</span></span></span><br><span class="line"><span class="tag"><span class="string">             elva-fairy-640w.jpg 2x"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">src</span>=<span class="string">"elva-fairy-640w.jpg"</span> <span class="attr">alt</span>=<span class="string">"Elva dressed as a fairy"</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">320px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在这种情况下，sizes并不需要——浏览器只是计算出正在显示的显示器的分辨率，然后提供srcset引用的最适合的图像。因此，如果访问页面的设备具有标准/低分辨率显示，一个设备像素表示一个CSS像素，elva-fairy-320w.jpg会被加载（1x 是默认值，所以你不需要写出来）。如果设备有高分辨率，两个或更多的设备像素表示一个CSS像素，elva-fairy-640w.jpg 会被加载。640px的图像大小为93KB，320px的图像的大小仅仅有39KB。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;用来在不同的尺寸的设备上提供不同的图片，具体看下面的例子：下面的网站为pc上的页面，如果不使用响应式图片，在小屏幕如手机上看时，中间的人物会很小，并且无法看清人脸，图像留白太多。&lt;/p&gt;
+&lt;img src=&quot;/blog/2019/08/14/响应式图片/picture-el
+      
+    
+    </summary>
+    
+    
+      <category term="网站优化" scheme="https://binghao-guan.github.io/blog/categories/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>出色的移动网站</title>
+    <link href="https://binghao-guan.github.io/blog/2019/08/07/%E5%87%BA%E8%89%B2%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%BD%91%E7%AB%99/"/>
+    <id>https://binghao-guan.github.io/blog/2019/08/07/%E5%87%BA%E8%89%B2%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%BD%91%E7%AB%99/</id>
+    <published>2019-08-07T05:56:09.000Z</published>
+    <updated>2019-08-28T11:28:47.500Z</updated>
+    
+    <content type="html"><![CDATA[<p>###首页和导航</p><h4 id="让吸引注意力的元素前置居中"><a href="#让吸引注意力的元素前置居中" class="headerlink" title="让吸引注意力的元素前置居中"></a>让吸引注意力的元素前置居中</h4><ul><li>将用户所有最常见的任务安排在便于用户访问的位置。</li><li>通过菜单或“首屏线以下空间”（网页中不向下滚动便无法看到的部分）提供二级任务。</li></ul><h4 id="让菜单保持简短和亲切"><a href="#让菜单保持简短和亲切" class="headerlink" title="让菜单保持简短和亲切"></a>让菜单保持简短和亲切</h4><p>移动用户没有耐心通过浏览冗长的选项列表查找自己需要的内容。</p><h4 id="简化返回首页的操作"><a href="#简化返回首页的操作" class="headerlink" title="简化返回首页的操作"></a>简化返回首页的操作</h4><p>用户期望在其点按移动页面左上角的徽标时能够返回首页，如果未提供该徽标或者徽标不起作用，会令他们感到失望。</p><h4 id="别让推广信息喧宾夺主"><a href="#别让推广信息喧宾夺主" class="headerlink" title="别让推广信息喧宾夺主"></a>别让推广信息喧宾夺主</h4><p>大型应用安装插页广告（例如，隐藏内容并提示用户安装应用的整页推广信息）令用户反感，让他们难以执行任务。除了让用户反感外，使用应用安装插页广告的网站还无法通过 Google 移动易用性测试，这可能对其搜索排名产生不良影响。</p><h3 id="网站搜索"><a href="#网站搜索" class="headerlink" title="网站搜索"></a>网站搜索</h3><h4 id="让网站搜索可见"><a href="#让网站搜索可见" class="headerlink" title="让网站搜索可见"></a>让网站搜索可见</h4><p>寻找信息的用户通常求助于搜索，因此搜索字段应是他们在您的页面上率先看到的内容。 不要将搜索框隐藏在菜单中。</p><h4 id="确保网站搜索结果相关"><a href="#确保网站搜索结果相关" class="headerlink" title="确保网站搜索结果相关"></a>确保网站搜索结果相关</h4><p>别让用户为了查找要寻找的内容而浏览多个页面的结果。 通过自动完成查询、更正错误拼写和提供相关查询建议简化用户的搜索操作。 为免于重复劳动，可以考虑使用 <a href="https://cse.google.com/cse/" target="_blank" rel="noopener">Google 自定义搜索之类</a>的稳健产品。</p><h4 id="实现过滤条件来缩小结果范围"><a href="#实现过滤条件来缩小结果范围" class="headerlink" title="实现过滤条件来缩小结果范围"></a>实现过滤条件来缩小结果范围</h4><p>研究参与者依靠过滤条件查找他们要寻找的内容，他们会放弃不提供有效过滤条件的网站。对搜索结果应用过滤条件，通过显示应用特定过滤条件时将会返回多少结果来帮助用户。</p><h4 id="引导用户获得更相关的网站搜索结果"><a href="#引导用户获得更相关的网站搜索结果" class="headerlink" title="引导用户获得更相关的网站搜索结果"></a>引导用户获得更相关的网站搜索结果</h4><p>对于具有多样化客户群的网站，请先提出几个问题，然后再呈现搜索框，并利用客户的回答作为搜索查询过滤条件来确保用户获得来自最相关客户群的结果。\</p><h3 id="商务和转化"><a href="#商务和转化" class="headerlink" title="商务和转化"></a>商务和转化</h3><h4 id="让用户先探索、后表态"><a href="#让用户先探索、后表态" class="headerlink" title="让用户先探索、后表态"></a>让用户先探索、后表态</h4><p>研究参与者对那些要求先行注册才能查看内容的网站感到失望，尤其是在他们不熟悉网站品牌的情况下。 尽管对您的业务而言客户信息不可或缺，但过早索要可能导致注册量减少。</p><h4 id="让用户以访客身份购买"><a href="#让用户以访客身份购买" class="headerlink" title="让用户以访客身份购买"></a>让用户以访客身份购买</h4><p>研究参与者对访客结账的看法是“方便”、“简单”、“轻松”和“快速”。 用户对购物时强制他们注册帐号的网站感到恼火，尤其是在注册帐号的好处并不明确的情况下。</p><h4 id="利用现有信息最大限度提高便利性"><a href="#利用现有信息最大限度提高便利性" class="headerlink" title="利用现有信息最大限度提高便利性"></a>利用现有信息最大限度提高便利性</h4><p>为注册用户记忆并预填首选项。为新用户提供熟悉的第三方结账服务。</p><h4 id="为复杂任务使用点击呼叫按钮"><a href="#为复杂任务使用点击呼叫按钮" class="headerlink" title="为复杂任务使用点击呼叫按钮"></a>为复杂任务使用点击呼叫按钮</h4><p>在具备呼叫能力的设备上，点击呼叫链接可让用户通过简单地触按链接来拨打电话。在大多数移动设备上，用户会在拨号前收到确认，或者为用户提供一个菜单，询问用户应如何处理号码。</p><h4 id="为在其他设备上完成任务提供便利"><a href="#为在其他设备上完成任务提供便利" class="headerlink" title="为在其他设备上完成任务提供便利"></a>为在其他设备上完成任务提供便利</h4><p>用户经常想在其他设备上完成任务。例如，他们可能想在更大的屏幕上查看某个项目。 或者他们可能工作繁忙，需要稍后完成任务。 通过让用户能够在社交网络上分享项目，或允许用户直接在网站内通过电子邮件向自己发送链接，为这些客户之旅提供支持。</p><h3 id="表单输入"><a href="#表单输入" class="headerlink" title="表单输入"></a>表单输入</h3><h4 id="精简信息输入"><a href="#精简信息输入" class="headerlink" title="精简信息输入"></a>精简信息输入</h4><p>用户按回车键时自动前进到下一字段。一般而言，用户必须执行的触按越少，体验越佳。</p><h4 id="选择最简单的输入"><a href="#选择最简单的输入" class="headerlink" title="选择最简单的输入"></a>选择最简单的输入</h4><p>为每个情境使用最合适的输入类型。 使用 datalist 之类的元素为字段提供建议值。</p><h4 id="为日期选择提供可视化日历"><a href="#为日期选择提供可视化日历" class="headerlink" title="为日期选择提供可视化日历"></a>为日期选择提供可视化日历</h4><p>明确标示开始日期和结束日期。用户应不必单纯为了安排日期而离开网站去查看日历应用。</p><h4 id="通过标示和实时验证最大限度减少表单错误"><a href="#通过标示和实时验证最大限度减少表单错误" class="headerlink" title="通过标示和实时验证最大限度减少表单错误"></a>通过标示和实时验证最大限度减少表单错误</h4><p>正确标示输入并实时验证输入。</p><h4 id="设计高效的表单"><a href="#设计高效的表单" class="headerlink" title="设计高效的表单"></a>设计高效的表单</h4><p>充分利用自动填充，让用户能借助预填充的数据轻松填写表单。 使用已知信息预先填充字段。 例如，在检索收货和账单地址时，尝试使用 requestAutocomplete，或让用户能够将其收货地址复制到其账单地址（反之亦然）。</p><h3 id="易用性和机型"><a href="#易用性和机型" class="headerlink" title="易用性和机型"></a>易用性和机型</h3><h4 id="对您的整个网站进行移动优化"><a href="#对您的整个网站进行移动优化" class="headerlink" title="对您的整个网站进行移动优化"></a>对您的整个网站进行移动优化</h4><p>使用可随用户设备的尺寸和能力而变化的自适应布局。 研究参与者发现混合使用桌面和移动优化页面的网站甚至比单纯使用桌面页面的网站还要难以使用。</p><h4 id="别让用户进行捏拉缩放"><a href="#别让用户进行捏拉缩放" class="headerlink" title="别让用户进行捏拉缩放"></a>别让用户进行捏拉缩放</h4><p>用户对垂直滚动网站感到顺手，水平滚动则不然。 避免使用大型、固定宽度的元素。利用 CSS 媒体查询为不同屏幕应用不同的样式。<br>不要创建只能在特定视口宽度下正常显示的内容。强制用户水平滚动的网站无法通过 Google 移动易用性测试，可能对其搜索排名产生不良影响。</p><h4 id="让产品图像可扩展"><a href="#让产品图像可扩展" class="headerlink" title="让产品图像可扩展"></a>让产品图像可扩展</h4><p>零售客户期望网站允许其查看产品的高分辨率特写。研究参与者对无法查看所购买的产品感到失望。</p><h4 id="告诉用户哪个方向效果最好"><a href="#告诉用户哪个方向效果最好" class="headerlink" title="告诉用户哪个方向效果最好"></a>告诉用户哪个方向效果最好</h4><p>研究参与者往往一直使用同一屏幕方向，直至系统提示其进行切换。 同时采用横向和纵向设计，或鼓励用户切换至最佳方向。 确保即使用户忽略切换方向的建议，仍可完成您的重要行为召唤。</p><h4 id="将您的用户留在单一浏览器窗口内"><a href="#将您的用户留在单一浏览器窗口内" class="headerlink" title="将您的用户留在单一浏览器窗口内"></a>将您的用户留在单一浏览器窗口内</h4><p>用户可能难以在窗口之间切换，并且可能找不到返回网站的路径。 避免启动新窗口的行为召唤。识别任何可能导致用户离开您的网站的流程，并提供相应功能将他们留在您的网站上。例如，如果您接受优惠券，请直接在网站上提供，而不要让用户被迫前往其他网站寻找优惠。</p><h4 id="避免使用“完整网站”标示"><a href="#避免使用“完整网站”标示" class="headerlink" title="避免使用“完整网站”标示"></a>避免使用“完整网站”标示</h4><p>当研究参与者看到用于切换“完整网站”（即桌面网站）和“移动网站”的选项时，会认为移动网站缺少内容而改为选择“完整”网站，这会将他们导向桌面网站。</p><h4 id="明确您为何需要用户的位置"><a href="#明确您为何需要用户的位置" class="headerlink" title="明确您为何需要用户的位置"></a>明确您为何需要用户的位置</h4><p>用户应始终明了您为何索要其位置。 研究参与者试图预订其他城市的酒店，而旅行网站却在检测到其位置后改为提供其所在城市的酒店，这令他们感到困惑。默认情况下将位置字段留空，让用户通过“Find Near Me”之类的明确行为召唤选择填充这些字段。</p><blockquote><p>怎样才算出色的移动网站</p><footer><strong>Jenny Gove</strong><cite><a href="https://developers.google.com/web/fundamentals/design-and-ux/principles" target="_blank" rel="noopener">developers.google.com/web/fundamentals/design-and-ux/principles</a></cite></footer></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;###首页和导航&lt;/p&gt;
+&lt;h4 id=&quot;让吸引注意力的元素前置居中&quot;&gt;&lt;a href=&quot;#让吸引注意力的元素前置居中&quot; class=&quot;headerlink&quot; title=&quot;让吸引注意力的元素前置居中&quot;&gt;&lt;/a&gt;让吸引注意力的元素前置居中&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;将用户所
+      
+    
+    </summary>
+    
+    
+    
+      <category term="移动网站" scheme="https://binghao-guan.github.io/blog/tags/%E7%A7%BB%E5%8A%A8%E7%BD%91%E7%AB%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>双钻石设计模型</title>
+    <link href="https://binghao-guan.github.io/blog/2019/08/07/%E5%8F%8C%E9%92%BB%E7%9F%B3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://binghao-guan.github.io/blog/2019/08/07/%E5%8F%8C%E9%92%BB%E7%9F%B3%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%9E%8B/</id>
+    <published>2019-08-07T02:29:00.000Z</published>
+    <updated>2019-08-28T11:28:47.500Z</updated>
+    
+    <content type="html"><![CDATA[<img src="/blog/2019/08/07/双钻石设计模型/double-diamond.png" title="双钻石设计模型"><p><a href="https://www.designcouncil.org.uk/" target="_blank" rel="noopener">英国设计协会</a>开创的”双钻石”设计流程模式，其步骤涉及以下项目阶段：<em>理解、定义、分散、决定、开发原型和验证</em>。</p><h4 id="确定挑战声明"><a href="#确定挑战声明" class="headerlink" title="确定挑战声明"></a>确定挑战声明</h4><p>首先要从当前的根本性挑战着手，像提案一样把它写出来，并且要问自己:”我实际试图解决的是什么问题?”。挑战声明是为项目编写的简报，其中需要包含目标。</p><p>挑战可能是已有项目的优化功能，也可能是一款全新的产品。无论是什么任务，只需调整声明的措辞，使之适合需要达到的目标。声明应该与团队目标相关联、以受众为中心、具有鼓舞性并且言辞简洁。<br>以下是一些例子:</p><ul><li>优化网页的首屏加载速度</li><li>优化代码，简化项目结构</li></ul><h4 id="更新挑战声明"><a href="#更新挑战声明" class="headerlink" title="更新挑战声明"></a>更新挑战声明</h4><p>编写了若干版本后的目标后，将其提交给团队以形成共识。最好加入一个期限，因为这有助于团队集中精力解决问题。因此，对于以上所列的实例，可能需要作出下列调整：</p><ul><li>1个月内把图片改为响应式图片</li><li>15天内更改现有css，全部改为BEM风格</li></ul><p>完成挑战声明后，将其展示在醒目位置，以便工作时能够看到。以便不断的查阅声明内容，并在整个项目进行过程中对其更新或修改。</p><h4 id="确认挑战（验证问题）"><a href="#确认挑战（验证问题）" class="headerlink" title="确认挑战（验证问题）"></a>确认挑战（验证问题）</h4><p>下一步是研究挑战和了解问题的相关情况。确定团队对问题的理解是否有效。因为一搬我们是从自己的角度看待问题，这样做很危险，因为大多数像我们这样的科技人员实际上超级用户，只是用户群体中的少数。我们是享有发言权的少数派，可能会愚蠢地认为存在某种问题，而事实并非如此。</p><h4 id="项目规划图"><a href="#项目规划图" class="headerlink" title="项目规划图"></a>项目规划图</h4><p>由于参与人员是有不同类型的人员组成，需要详细列出每个参与者及其目标，并写下每个参与者需要完成的步骤数量</p><img src="/blog/2019/08/07/双钻石设计模型/project-map.jpg" title="项目规划图"><p>项目规划图对每个用户或参与者在流程中的主要步骤作出规划。</p><p>项目规划图对每个用户或参与者在流程中的主要步骤作出规划。<br>得到的项目规划图包含流程中的主要步骤。可以将其视为不包含过多细节的项目概览。 团队成员还可通过它来判断规划图是否与挑战声明一致。 稍后，当您分解每个步骤时，可以获得更多详情。 但项目规划图暂时只能对用户完成最终目标所需执行的步骤进行高层次分解。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;img src=&quot;/blog/2019/08/07/双钻石设计模型/double-diamond.png&quot; title=&quot;双钻石设计模型&quot;&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.designcouncil.org.uk/&quot; target=&quot;_blank&quot; rel=
+      
+    
+    </summary>
+    
+    
+      <category term="用户体验基础知识" scheme="https://binghao-guan.github.io/blog/categories/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>通过Audit优化网站加载速度</title>
+    <link href="https://binghao-guan.github.io/blog/2019/07/31/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/"/>
+    <id>https://binghao-guan.github.io/blog/2019/07/31/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/</id>
+    <published>2019-07-31T09:16:17.000Z</published>
+    <updated>2019-08-28T11:28:47.511Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="不使用延迟首次回执的资源"><a href="#不使用延迟首次回执的资源" class="headerlink" title="不使用延迟首次回执的资源"></a>不使用延迟首次回执的资源</h3><p>浏览器进行渲染时，需要构建渲染树，而渲染树由DOM树和CSSOM树组成。之后浏览器根据渲染树计算每个可见元素的布局，并输出给绘制流程，然后将像素渲染到屏幕上。<br>HTML和CSS都是阻塞渲染的资源。HTML显然是必要的，因为如果没有DOM，我们就没有可以渲染的内容，但CSS的必要性就不太明显。</p><p>阻塞渲染是指浏览器是否需要暂停网页的首次渲染，直至该资源准备就绪。无论哪一种情况，浏览器仍会下载CSS资产，只不过不阻塞渲染的资源优先级较低罢了。</p><p>默认情况下，CSS被视为阻塞资源。我们可以通过媒体查询将一些CSS资源标记为不阻塞渲染，及使用media属性控制</p><ul><li>css 通过media属性进行媒体查询，只加载符合media的css</li></ul><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css" target="_blank" rel="noopener">阻塞渲染的css</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;不使用延迟首次回执的资源&quot;&gt;&lt;a href=&quot;#不使用延迟首次回执的资源&quot; class=&quot;headerlink&quot; title=&quot;不使用延迟首次回执的资源&quot;&gt;&lt;/a&gt;不使用延迟首次回执的资源&lt;/h3&gt;&lt;p&gt;浏览器进行渲染时，需要构建渲染树，而渲染树由DOM树和CSS
+      
+    
+    </summary>
+    
+    
+      <category term="网站优化" scheme="https://binghao-guan.github.io/blog/categories/%E7%BD%91%E7%AB%99%E4%BC%98%E5%8C%96/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://binghao-guan.github.io/blog/2019/07/25/hello-world/"/>
+    <id>https://binghao-guan.github.io/blog/2019/07/25/hello-world/</id>
+    <published>2019-07-25T11:48:18.523Z</published>
+    <updated>2019-07-25T11:48:18.523Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"我的第一遍博客"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
